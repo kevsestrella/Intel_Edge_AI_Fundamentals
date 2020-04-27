@@ -12,9 +12,15 @@ def handle_pose(output, input_shape):
     fields), while the second blob contains keypoint heatmaps.
     '''
     # TODO 1: Extract only the second blob output (keypoint heatmaps)
+    heatmaps = output['Mconv7_stage2_L2']
     # TODO 2: Resize the heatmap back to the size of the input
+    out_heatmap = np.zeros([heatmaps.shape[1], input_shape[0], input_shape[1]])
+    for h in range(len(heatmaps[0])):
+        # cv2 at it again with it's reverse dimensions, so this just means 
+        # upscale the 32 x 57 to 562 x 1000
+        out_heatmap[h] = cv2.resize(heatmaps[0][h], input_shape[0:2][::-1])
 
-    return None
+    return out_heatmap
 
 
 def handle_text(output, input_shape):
