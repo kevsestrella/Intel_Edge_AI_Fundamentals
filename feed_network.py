@@ -28,7 +28,7 @@ def load_to_IE(model_xml, cpu_ext):
 
     ### TODO: Load IR files into their related class
     bin = os.path.splitext(model_xml)[0] + '.bin'
-    network = IENetwork(model=model_xml, weights=bin)
+    network = plugin.read_network(model_xml, bin)
 
     ### TODO: Add a CPU extension, if applicable. It's suggested to check
     ###       your code for unsupported layers for practice before 
