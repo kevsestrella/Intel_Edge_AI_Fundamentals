@@ -51,6 +51,11 @@ def handle_car(output, input_shape):
     Handles the output of the Car Metadata model.
     Returns two integers: the argmax of each softmax output.
     The first is for color, and the second for type.
+
+    name: "color", shape: [1, 7, 1, 1] - Softmax output across seven color
+    classes [white, gray, yellow, red, green, blue, black]
+    name: "type", shape: [1, 4, 1, 1] - Softmax output across four type
+    classes [car, bus, truck, van]
     '''
     # TODO 1: Get the argmax of the "color" output
     # TODO 2: Get the argmax of the "type" output
