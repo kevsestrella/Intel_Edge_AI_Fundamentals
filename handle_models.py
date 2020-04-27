@@ -36,9 +36,14 @@ def handle_text(output, input_shape):
     Refer to PixelLink and demos for details.
     '''
     # TODO 1: Extract only the first blob output (text/no text classification)
+    text_notext = output['model/link_logits_/add']
     # TODO 2: Resize this output back to the size of the input
-
-    return None
+    out_text = np.zeros([text_notext.shape[1], input_shape[0], input_shape[1]])
+    h = 0
+    for classification in output['model/segm_logits/add'][0]:
+        out_text[h] = cv2.resize(classification, input_shape[0:2][::-1])
+        h += 1
+    return out_text
 
 
 def handle_car(output, input_shape):
