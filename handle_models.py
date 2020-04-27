@@ -28,6 +28,12 @@ def handle_text(output, input_shape):
     Handles the output of the Text Detection model.
     Returns ONLY the text/no text classification of each pixel,
         and not the linkage between pixels and their neighbors.
+
+    name: "model/link\_logits\_/add", shape: [1x16x192x320] - logits related to
+            linkage between pixels and their neighbors.
+    name: "model/segm\_logits/add", shape: [1x2x192x320] - logits related to
+            text/no-text classification for each pixel.
+    Refer to PixelLink and demos for details.
     '''
     # TODO 1: Extract only the first blob output (text/no text classification)
     # TODO 2: Resize this output back to the size of the input
