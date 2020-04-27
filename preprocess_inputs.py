@@ -24,11 +24,11 @@ def pose_estimation(input_image):
     H - image height
     W - image width. Expected color order is BGR.
     '''
-    preprocessed_image = np.copy(input_image)
+    image = np.copy(input_image)
 
     # TODO: Preprocess the image for the pose estimation model
 
-    return preprocessed_image
+    return preprocess_image(image, 256, 456)
 
 
 def text_detection(input_image):
@@ -47,11 +47,11 @@ def text_detection(input_image):
     W - image width
     Expected color order - BGR.
     '''
-    preprocessed_image = np.copy(input_image)
+    image = np.copy(input_image)
 
     # TODO: Preprocess the image for the text detection model
 
-    return preprocessed_image
+    return preprocess_image(image, 768, 1280)
 
 
 def car_meta(input_image):
@@ -69,8 +69,8 @@ def car_meta(input_image):
     - W - image width.
     Expected color order - BGR.
     '''
-    preprocessed_image = np.copy(input_image)
+    image = np.copy(input_image)
 
     # TODO: Preprocess the image for the car metadata model
 
-    return preprocessed_image
+    return preprocess_image(image, 72, 72)
