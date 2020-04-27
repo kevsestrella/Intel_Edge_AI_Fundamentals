@@ -6,6 +6,10 @@ def handle_pose(output, input_shape):
     '''
     Handles the output of the Pose Estimation model.
     Returns ONLY the keypoint heatmaps, and not the Part Affinity Fields.
+
+    The net outputs two blobs with the [1, 38, 32, 57] and [1, 19, 32, 57]
+    shapes. The first blob contains keypoint pairwise relations (part affinity
+    fields), while the second blob contains keypoint heatmaps.
     '''
     # TODO 1: Extract only the second blob output (keypoint heatmaps)
     # TODO 2: Resize the heatmap back to the size of the input
