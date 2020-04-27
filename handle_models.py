@@ -58,9 +58,13 @@ def handle_car(output, input_shape):
     classes [car, bus, truck, van]
     '''
     # TODO 1: Get the argmax of the "color" output
+    color = output['color']
+    color_pred = color.flatten().argmax()
     # TODO 2: Get the argmax of the "type" output
+    typ = output['type']
+    type_pred = typ.flatten().argmax()
 
-    return None
+    return color_pred, type_pred
 
 
 def handle_output(model_type):
