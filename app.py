@@ -77,6 +77,7 @@ def infer_on_video(args):
     out = cv2.VideoWriter("out.mp4", CODEC, 30, (width, height))
 
     # Process frames until the video ends, or process is exited
+    input_shape = network.get_input_shape()
     while cap.isOpened():
         # Read the next frame
         flag, frame = cap.read()
@@ -85,7 +86,6 @@ def infer_on_video(args):
         key_pressed = cv2.waitKey(60)
 
         ### TODO: Pre-process the frame
-        input_shape = network.get_input_shape()
         preprocessed_frame = cv2.resize(frame, (input_shape[3], input_shape[2]))
         preprocessed_frame = preprocessed_frame.transpose((2,0,1))
         preprocessed_frame = preprocessed_frame.reshape(1, *preprocessed_frame.shape)
