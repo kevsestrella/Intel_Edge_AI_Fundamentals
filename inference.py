@@ -37,8 +37,8 @@ class Network:
         self.plugin = IECore()
 
         # Add a CPU extension, if applicable
-        if cpu_extension and "CPU" in device:
-            self.plugin.add_extension(cpu_extension, device)
+        # if cpu_extension and "CPU" in device:
+        #     self.plugin.add_extension(cpu_extension, device)
 
         # Read the IR as a IENetwork
         self.network = IENetwork(model=model_xml, weights=model_bin)
